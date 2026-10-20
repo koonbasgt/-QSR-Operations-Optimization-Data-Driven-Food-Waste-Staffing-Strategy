@@ -1,5 +1,3 @@
-# -QSR-Operations-Optimization-Data-Driven-Food-Waste-Staffing-Strategy
-How I Optimized a Restaurant's Operations Using Data Analytics &amp; Project Management! 📊 ​Tired of seeing restaurants lose money on excess food waste and poor staff scheduling during peak hours?In this video, I break down a real-worldframeworks to solve classic F&amp;B challenges!
 # 🍔 QSR Waste & Staffing Optimization Project
 
 > **A Data-Driven Operations & Project Management Case Study** designed to optimize inventory replenishment, eliminate food waste, and streamline staff scheduling for quick-service restaurants (QSR).
@@ -51,6 +49,7 @@ Using **SQLite and Python**, we executed analytical queries to uncover deep oper
 
 ### 🔍 Query 1: Peak Hours Analysis
 Identified high-revenue rush hours to guide future staff allocation.
+
 ```sql
 SELECT 
     hour,
@@ -60,11 +59,11 @@ SELECT
 FROM fact_sales_transactions
 GROUP BY hour
 ORDER BY hourly_revenue_usd DESC;
+
 ​Analytical Finding: Peak rushes occur from 12:00–1:00 PM and 6:00–7:00 PM, generating roughly 65% of daily revenue. Conversely, the 2:00–3:00 PM window yields minimal returns.
+
 ​📦 Query 2: Food Waste Cost Analysis
 ​Pinpointed which inventory items drive the highest financial losses.
-
-SQL
 SELECT 
     category,
     item_name,
@@ -76,19 +75,7 @@ FROM fact_inventory_waste
 GROUP BY category, item_name
 ORDER BY total_cost_lost_usd DESC;
 
-Analytical Finding: Prepped Salad (Produce) recorded a staggering 40% waste rate, driving a projected monthly loss of nearly $800+.
+​Analytical Finding: Prepped Salad (Produce) recorded a staggering 40% waste rate, driving a projected monthly loss of nearly $800+.
 
 ​🚀 5. Project Management & Implementation Plan
-
 ​As the Project Manager, a structured 4-week rollout plan was designed to implement corrective actions:
-PhaseTimelineKey Activities & InterventionsTarget KPI
-Phase 1Week 1Audit POS data, establish baseline daily waste, and map shift overlaps.100% Data Visibility
-Phase 2Week 2Introduce Just-in-Time (JIT) Prep for perishable items and flexible staff shifts.-15% Food Waste
-Phase 3Week 3Conduct weekly reviews of labor cost percentages against revenue benchmarks.Labor Cost < 30%
-Phase 4Week 4Full operational rollout, standard operating procedures (SOPs), and documentation.Total savings $900+/mo
-
-📈 6. Business Impact & Key Takeaways
-​Inventory Optimization: Perishable waste reduced by ~40%, securing $480+/mo in direct cost savings.
-​Labor Efficiency: Eliminated redundant mid-afternoon overstaffing, saving $500+/mo in payroll while accelerating peak service speed.
-​Core Competencies Demonstrated: Blends Data Analytics (Python, SQL) with F&B Operations & Project Management, tailored for global Management Trainee and Operations roles.
-​Author: Nopphanat Thatiwongwanit
