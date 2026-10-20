@@ -5,12 +5,12 @@
 ---
 
 ## 📋 Table of Contents
-1. [Project Overview & Business Context](#-1-project-overview--business-context)
-2. [Project Objectives & OKRs](#-2-project-objectives--okrs)
-3. [Database Architecture & Schema](#-3-database-architecture--schema)
-4. [Data Analytics & SQL Insights](#-4-data-analytics--sql-insights)
-5. [Project Management & Implementation Plan](#-5-project-management--implementation-plan)
-6. [Business Impact & Key Takeaways](#-6-business-impact--key-takeaways)
+1. [Project Overview & Business Context](#1-project-overview--business-context)
+2. [Project Objectives & OKRs](#2-project-objectives--okrs)
+3. [Database Architecture & Schema](#3-database-architecture--schema)
+4. [Data Analytics & SQL Insights](#4-data-analytics--sql-insights)
+5. [Project Management & Implementation Plan](#5-project-management--implementation-plan)
+6. [Business Impact & Key Takeaways](#6-business-impact--key-takeaways)
 
 ---
 
@@ -18,18 +18,18 @@
 
 Operating a mid-sized quick-service restaurant (Apex QSR & Cafe) often leads to severe financial and operational inefficiencies if management decisions rely solely on intuition rather than empirical data. This project tackles two critical operational bottlenecks:
 
-* **High Food Waste Rate (18–22%):** Perishable inventory (dairy, fresh produce, and bakery goods) is frequently over-ordered, resulting in heavy daily disposal losses.
-* **Shift Mismatch & Overstaffing:** Inflexible shift structures lead to severe **Overstaffing** during slow mid-afternoon hours (Off-peak) while causing **Understaffing** and long customer wait times during lunch and dinner rushes (Peak Hours).
+- **High Food Waste Rate (18–22%):** Perishable inventory (dairy, fresh produce, and bakery goods) is frequently over-ordered, resulting in heavy daily disposal losses.
+- **Shift Mismatch & Overstaffing:** Inflexible shift structures lead to severe **Overstaffing** during slow mid-afternoon hours (Off-peak) while causing **Understaffing** and long customer wait times during lunch and dinner rushes (Peak Hours).
 
 ---
 
 ## 🎯 2. Project Objectives & OKRs
 
 To demonstrate a structured management approach, the project follows clear **Objectives and Key Results (OKRs)**:
-* **Objective:** Optimize restaurant operations and reduce revenue leakage using data analytics.
-* **Key Result 1:** Reduce monthly food waste cost by at least **40%** (from ~$800 to under $450/month).
-* **Key Result 2:** Eliminate redundant off-peak labor costs, saving **$500+/month** without compromising peak service quality.
-* **Key Result 3:** Improve order fulfillment speed during peak hours by **25%**.
+- **Objective:** Optimize restaurant operations and reduce revenue leakage using data analytics.
+- **Key Result 1:** Reduce monthly food waste cost by at least **40%** (from ~$800 to under $450/month).
+- **Key Result 2:** Eliminate redundant off-peak labor costs, saving **$500+/month** without compromising peak service quality.
+- **Key Result 3:** Improve order fulfillment speed during peak hours by **25%**.
 
 ---
 
@@ -50,33 +50,53 @@ Using **SQLite and Python**, we executed analytical queries to uncover deep oper
 ### 🔍 Query 1: Peak Hours Analysis
 Identified high-revenue rush hours to guide future staff allocation.
 
-```sql
-SELECT 
-    hour,
-    COUNT(transaction_id) AS total_orders,
-    SUM(items_sold_qty) AS total_items_sold,
-    SUM(total_sales_usd) AS hourly_revenue_usd
-FROM fact_sales_transactions
-GROUP BY hour
-ORDER BY hourly_revenue_usd DESC;
+    SELECT 
+        hour,
+        COUNT(transaction_id) AS total_orders,
+        SUM(items_sold_qty) AS total_items_sold,
+        SUM(total_sales_usd) AS hourly_revenue_usd
+    FROM fact_sales_transactions
+    GROUP BY hour
+    ORDER BY hourly_revenue_usd DESC;
 
-​Analytical Finding: Peak rushes occur from 12:00–1:00 PM and 6:00–7:00 PM, generating roughly 65% of daily revenue. Conversely, the 2:00–3:00 PM window yields minimal returns.
-
-* **Analytical Finding:** Peak rushes occur from **12:00–1:00 PM** and **6:00–7:00 PM**, generating roughly **65%** of daily revenue. Conversely, the 2:00–3:00 PM window yields minimal returns.
+- **Analytical Finding:** Peak rushes occur from **12:00–1:00 PM** and **6:00–7:00 PM**, generating roughly **65%** of daily revenue. Conversely, the 2:00–3:00 PM window yields minimal returns.
 
 ### 📦 Query 2: Food Waste Cost Analysis
 Pinpointed which inventory items drive the highest financial losses.
 
-```sql
-SELECT 
-    category,
-    item_name,
-    SUM(ordered_qty) AS total_ordered,
-    SUM(wasted_qty) AS total_wasted,
-    ROUND((SUM(wasted_qty) * 100.0 / SUM(ordered_qty)), 2) AS waste_rate_pct,
-    SUM(total_waste_cost_usd) AS total_cost_lost_usd
-FROM fact_inventory_waste
-GROUP BY category, item_name
-ORDER BY total_cost_lost_usd DESC;
+    SELECT 
+        category,
+        item_name,
+        SUM(ordered_qty) AS total_ordered,
+        SUM(wasted_qty) AS total_wasted,
+        ROUND((SUM(wasted_qty) * 100.0 / SUM(ordered_qty)), 2) AS waste_rate_pct,
+        SUM(total_waste_cost_usd) AS total_cost_lost_usd
+    FROM fact_inventory_waste
+    GROUP BY category, item_name
+    ORDER BY total_cost_lost_usd DESC;
 
-Analytical Finding: Prepped Salad (Produce) recorded a staggering 40% waste rate, driving a projected monthly loss of nearly $800+.
+- **Analytical Finding:** *Prepped Salad* (Produce) recorded a staggering **40% waste rate**, driving a projected monthly loss of nearly $800+.
+
+---
+
+## 🚀 5. Project Management & Implementation Plan
+
+As the Project Manager, a structured 4-week rollout plan was designed to implement corrective actions:
+
+| Phase | Timeline | Key Activities & Interventions | Target KPI |
+| :--- | :--- | :--- | :--- |
+| **Phase 1** | Week 1 | Audit POS data, establish baseline daily waste, and map shift overlaps. | 100% Data Visibility |
+| **Phase 2** | Week 2 | Introduce **Just-in-Time (JIT) Prep** for perishable items and flexible staff shifts. | -15% Food Waste |
+| **Phase 3** | Week 3 | Conduct weekly reviews of labor cost percentages against revenue benchmarks. | Labor Cost < 30% |
+| **Phase 4** | Week 4 | Full operational rollout, standard operating procedures (SOPs), and documentation. | Total savings **$900+/mo** |
+
+---
+
+## 📈 6. Business Impact & Key Takeaways
+
+- **Inventory Optimization:** Perishable waste reduced by ~40%, securing **$480+/mo** in direct cost savings.
+- **Labor Efficiency:** Eliminated redundant mid-afternoon overstaffing, saving **$500+/mo** in payroll while accelerating peak service speed.
+- **Core Competencies Demonstrated:** Blends **Data Analytics (Python, SQL)** with **F&B Operations & Project Management**, tailored for global Management Trainee and Operations roles.
+
+---
+*Author: Nopphanat Thatiwongwanit*
