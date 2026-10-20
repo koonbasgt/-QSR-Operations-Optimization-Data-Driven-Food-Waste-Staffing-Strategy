@@ -1,0 +1,9 @@
+transaction_id,date,hour,day_of_week,channel,items_sold_qty,total_sales_usd
+TXN_20261001_001,2026-10-01,8,Thursday,Takeaway,2,8.5
+TXN_20261001_002,2026-10-01,12,Thursday,Dine-in,4,26.0
+TXN_20261001_003,2026-10-01,12,Thursday,Delivery,3,19.5
+TXN_20261001_004,2026-10-01,13,Thursday,Dine-in,5,32.0
+TXN_20261001_005,2026-10-01,14,Thursday,Takeaway,1,4.5
+TXN_20261001_006,2026-10-01,15,Thursday,Delivery,1,5.0
+TXN_20261001_007,2026-10-01,18,Thursday,Dine-in,6,42.0
+TXN_20261001_008,2026-10-01,19,Thursday,Dine-in,4,28.5

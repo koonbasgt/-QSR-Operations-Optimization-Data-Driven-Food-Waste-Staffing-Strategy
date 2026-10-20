@@ -1,0 +1,7 @@
+waste_id,date,item_id,item_name,category,ordered_qty,used_qty,wasted_qty,unit_cost_usd,total_waste_cost_usd
+WST_1001,2026-10-01,ITEM_MILK_01,Whole Milk 1L,Dairy,50,38,12,2.5,30.0
+WST_1002,2026-10-01,ITEM_BREAD_02,Artisanal Buns,Bakery,40,25,15,1.8,27.0
+WST_1003,2026-10-01,ITEM_VEG_01,Prepped Salad,Produce,30,18,12,3.0,36.0
+WST_1004,2026-10-02,ITEM_MILK_01,Whole Milk 1L,Dairy,50,40,10,2.5,25.0
+WST_1005,2026-10-02,ITEM_BREAD_02,Artisanal Buns,Bakery,40,22,18,1.8,32.4
+WST_1006,2026-10-02,ITEM_VEG_01,Prepped Salad,Produce,30,15,15,3.0,45.0
