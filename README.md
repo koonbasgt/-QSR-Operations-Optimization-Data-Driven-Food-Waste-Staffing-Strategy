@@ -62,8 +62,12 @@ ORDER BY hourly_revenue_usd DESC;
 
 ​Analytical Finding: Peak rushes occur from 12:00–1:00 PM and 6:00–7:00 PM, generating roughly 65% of daily revenue. Conversely, the 2:00–3:00 PM window yields minimal returns.
 
-​📦 Query 2: Food Waste Cost Analysis
-​Pinpointed which inventory items drive the highest financial losses.
+* **Analytical Finding:** Peak rushes occur from **12:00–1:00 PM** and **6:00–7:00 PM**, generating roughly **65%** of daily revenue. Conversely, the 2:00–3:00 PM window yields minimal returns.
+
+### 📦 Query 2: Food Waste Cost Analysis
+Pinpointed which inventory items drive the highest financial losses.
+
+```sql
 SELECT 
     category,
     item_name,
@@ -75,7 +79,4 @@ FROM fact_inventory_waste
 GROUP BY category, item_name
 ORDER BY total_cost_lost_usd DESC;
 
-​Analytical Finding: Prepped Salad (Produce) recorded a staggering 40% waste rate, driving a projected monthly loss of nearly $800+.
-
-​🚀 5. Project Management & Implementation Plan
-​As the Project Manager, a structured 4-week rollout plan was designed to implement corrective actions:
+Analytical Finding: Prepped Salad (Produce) recorded a staggering 40% waste rate, driving a projected monthly loss of nearly $800+.
